@@ -16,12 +16,12 @@ from scipy.spatial import ConvexHull
 from sklearn.neighbors import NearestNeighbors
 import pdb
 #generates synthetic samples
-#input     samples- minority class samples 
-#        smote_percantage - >100   
-#        k= nearest neighbors for SMOTE
+#input samples- minority class samples 
+#smote_percentage - >100   
+#k= nearest neighbors for SMOTE
 def generate_samples(samples, smote_percentage=100, k=5):
     if smote_percentage < 100:
-        print('min SMOTE percantage should be 100')
+        print('min SMOTE percentage should be 100')
         exit(0)
     number_of_samples, number_of_features = samples.shape
     synthetic_points = np.zeros((number_of_samples*int(smote_percentage/100), number_of_features))
@@ -40,8 +40,8 @@ def generate_samples(samples, smote_percentage=100, k=5):
 
     return synthetic_points
 #Reads input file name and calls generate_samples() to generate synthetic samples
-#input     filename- dataset filename present in the folder
-#        smote_percantage - >100           
+#input filename- dataset filename present in the folder
+#smote_percentage - >100           
 def generate_smote_and_compare(filename, smote_percentage=100):
     Total_samples = genfromtxt(filename, delimiter=',')
     
@@ -125,7 +125,7 @@ def generate_smote_and_compare(filename, smote_percentage=100):
 
     number_of_positive_samples = all_positive_samples.shape[0]
     number_of_negative_samples = all_negative_samples.shape[0]
-    #under sampling of majority class with various percantages 
+    #under sampling of majority class with various percentages 
     all_percentages = [10,15,25,50,75,100,125,150,175,200,300,400,500,600,700,800,1000,2000]
 
     samples_to_be_taken = []
@@ -195,7 +195,7 @@ def generate_smote_and_compare(filename, smote_percentage=100):
     number_of_positive_samples = all_positive_samples.shape[0]
     number_of_negative_samples = all_negative_samples.shape[0]
 
-    #under sampling of majority class with various percantages for SMOTEd dataset
+    #under sampling of majority class with various percentages for SMOTEd dataset
     all_percentages = [10,15,25,50,75,100,125,150,175,200,300,400,500,600,700,800,1000,2000]
 
     samples_to_be_taken = []
